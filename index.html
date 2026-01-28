@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Refúgio</title>
+
+  <style>
+    body {
+      background: #0b0b0b;
+      color: #f2f2f2;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .menu button {
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background: #fff;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .secao {
+      display: none;
+      margin-top: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      line-height: 1.7;
+    }
+
+    .secao.ativa {
+      display: block;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 420px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .poema {
+      font-style: italic;
+      white-space: pre-line;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Refúgio</h1>
+
+  <!-- MENU -->
+  <div class="menu">
+    <button onclick="mostrar('ouca')">Ouça</button>
+    <button onclick="mostrar('leia')">Leia</button>
+    <button onclick="mostrar('fique')">Fique</button>
+  </div>
+
+  <!-- SEÇÃO OUVIR -->
+  <div id="ouca" class="secao ativa">
+    <audio controls>
+      <source src="Respirar era Difícil.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- SEÇÃO LER -->
+  <div id="leia" class="secao">
+    <div class="poema">
+Respirar era difícil
+antes de ser metáfora.
+O ar faltava,
+mas a palavra ficou.
+
+Se hoje eu paro,
+é pra continuar.
+    </div>
+  </div>
+
+  <!-- SEÇÃO FICAR -->
+  <div id="fique" class="secao">
+    <p>
+      Fique aqui.<br>
+      Você não precisa se explicar.<br><br>
+      Só existir já é suficiente.
+    </p>
+  </div>
+
+  <script>
+    function mostrar(id) {
+      const secoes = document.querySelectorAll('.secao');
+      secoes.forEach(s => s.classList.remove('ativa'));
+      document.getElementById(id).classList.add('ativa');
+    }
+  </script>
+
+</body>
+</html>
