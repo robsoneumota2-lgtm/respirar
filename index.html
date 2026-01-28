@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refúgio</title>
 
 <style>
@@ -28,10 +29,10 @@ audio {
 
 .caixa {
   max-width: 700px;
-  margin: 40px auto;
+  margin: 50px auto;
   line-height: 2;
   font-style: italic;
-  font-size: 10px;
+  font-size: 24px;
 }
 
 .botao {
@@ -42,8 +43,8 @@ button {
   background: none;
   border: 1px solid #777;
   color: #f2f2f2;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 12px 26px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -53,6 +54,8 @@ button:hover {
 
 .texto {
   display: none;
+  opacity: 0;
+  transition: opacity 4s ease; /* CONTROLA A VELOCIDADE */
 }
 </style>
 </head>
@@ -66,7 +69,7 @@ button:hover {
 </audio>
 
 <div class="botao">
-  <button onclick="mostrarTexto()">Leia</button>
+  <button onclick="mostrarTexto()">Respirar comigo</button>
 </div>
 
 <div class="caixa">
@@ -107,12 +110,21 @@ function mostrarTexto() {
   passo++;
 
   if (passo === 1) {
-    document.getElementById("t1").style.display = "block";
+    aparecer("t1");
   }
 
   if (passo === 2) {
-    document.getElementById("t2").style.display = "block";
+    aparecer("t2");
   }
+}
+
+function aparecer(id) {
+  const el = document.getElementById(id);
+  el.style.display = "block";
+
+  setTimeout(() => {
+    el.style.opacity = 1;
+  }, 100); // pequeno atraso pra garantir suavidade
 }
 </script>
 
