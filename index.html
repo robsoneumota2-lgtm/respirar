@@ -1,96 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Refúgio</title>
+<meta charset="UTF-8">
+<title>Refúgio</title>
 
-  <style>
-    body {
-      background: #0b0b0b;
-      color: #f2f2f2;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    audio {
-      width: 100%;
-      max-width: 420px;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .menu button {
-      margin: 5px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      border: none;
-      background: #fff;
-      color: #000;
-      cursor: pointer;
-    }
-
-    .secao {
-      display: none;
-      margin-top: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-      text-align: left;
-    }
-
-    .secao.ativa {
-      display: block;
-    }
-
-    .poema {
-  font-style: italic;
-  white-space: pre-line;
-  opacity: 0.9;
-
-  max-height: 200px;      /* altura da caixa */
-  overflow-y: auto;       /* permite rolagem */
-  padding-right: 10px;
+<style>
+body {
+  background: #0b0b0b;
+  color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 30px 20px;
 }
-  </style>
+
+h1 {
+  margin-bottom: 10px;
+}
+
+audio {
+  width: 100%;
+  max-width: 420px;
+  margin: 20px auto;
+  display: block;
+}
+
+.menu button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+/* CAIXA DA LETRA */
+.caixa {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  margin-top: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TEXTO QUE SOBE */
+.letra {
+  position: absolute;
+  width: 100%;
+  white-space: pre-line;
+  font-style: italic;
+  line-height: 1.8;
+  animation: subir 40s linear infinite;
+}
+
+/* ANIMAÇÃO */
+@keyframes subir {
+  0%   { top: 100%; }
+  100% { top: -100%; }
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Refúgio</h1>
+<h1>Refúgio</h1>
 
-  <!-- 🎵 MÚSICA SEMPRE ATIVA -->
-  <audio controls>
-    <source src="Respirar era Difícil.mp3" type="audio/mpeg">
-  </audio>
+<audio controls>
+  <source src="Respirar era Difícil.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- MENU -->
-  <div class="menu">
-    <button onclick="mostrar('ouca')">Ouça</button>
-    <button onclick="mostrar('leia')">Leia</button>
-    <button onclick="mostrar('fique')">Fique</button>
-  </div>
+<div class="menu">
+  <button onclick="document.getElementById('letra').style.animationPlayState='running'">
+    Leia
+  </button>
+</div>
 
-  <!-- CONTEÚDOS -->
-  <div id="ouca" class="secao ativa">
-    <p>Se quiser, apenas escute.<br>Não precisa fazer nada.</p>
-  </div>
-
-  <div id="leia" class="secao">
-  <div id="letra" class="poema">
+<div class="caixa">
+  <div class="letra" id="letra">
 Respirar era difícil
 antes de ser metáfora.
 
 O peito fechava
 sem pedir permissão.
 
-Cada passo doía
+Cada passo doía,
 como se o ar tivesse peso.
 
 Mas eu fiquei.
@@ -98,40 +93,7 @@ Mas eu fiquei.
 Mesmo sem ar,
 eu fiquei.
   </div>
-  </div>
+</div>
 
-  <div id="fique" class="secao">
-    <p>
-      Fique aqui.<br>
-      Não precisa se explicar.<br><br>
-      O mundo pode esperar.
-    </p>
-  </div>
-
-<script>
-  function mostrar(id) {
-    document.querySelectorAll('.secao')
-      .forEach(s => s.classList.remove('ativa'));
-    document.getElementById(id).classList.add('ativa');
-
-    if (id === 'leia') iniciarRolagem();
-  }
-
-  function iniciarRolagem() {
-    const el = document.getElementById('letra');
-    el.scrollTop = 0;
-
-    let pos = 0;
-    const max = el.scrollHeight - el.clientHeight;
-
-    clearInterval(window.rolagem);
-    window.rolagem = setInterval(() => {
-      if (pos < max) {
-        pos += 1;
-        el.scrollTop = pos;
-      }
-    }, 80); // quanto maior, mais lento
-  }
-</script>
 </body>
 </html>
