@@ -79,16 +79,21 @@
   </div>
 
   <div id="leia" class="secao">
-    <div class="poema">
+  <div id="letra" class="poema">
 Respirar era difícil
 antes de ser metáfora.
 
-O peito apertava,
-mas a palavra ficou.
+O peito fechava
+sem pedir permissão.
 
-Se hoje eu paro,
-é pra continuar.
-    </div>
+Cada passo doía
+como se o ar tivesse peso.
+
+Mas eu fiquei.
+
+Mesmo sem ar,
+eu fiquei.
+  </div>
   </div>
 
   <div id="fique" class="secao">
@@ -99,13 +104,30 @@ Se hoje eu paro,
     </p>
   </div>
 
-  <script>
-    function mostrar(id) {
-      document.querySelectorAll('.secao')
-        .forEach(s => s.classList.remove('ativa'));
-      document.getElementById(id).classList.add('ativa');
-    }
-  </script>
+<script>
+  function mostrar(id) {
+    document.querySelectorAll('.secao')
+      .forEach(s => s.classList.remove('ativa'));
+    document.getElementById(id).classList.add('ativa');
 
+    if (id === 'leia') iniciarRolagem();
+  }
+
+  function iniciarRolagem() {
+    const el = document.getElementById('letra');
+    el.scrollTop = 0;
+
+    let pos = 0;
+    const max = el.scrollHeight - el.clientHeight;
+
+    clearInterval(window.rolagem);
+    window.rolagem = setInterval(() => {
+      if (pos < max) {
+        pos += 1;
+        el.scrollTop = pos;
+      }
+    }, 80); // quanto maior, mais lento
+  }
+</script>
 </body>
 </html>
