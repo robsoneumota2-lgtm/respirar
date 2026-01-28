@@ -47,8 +47,12 @@ audio {
 }
 
 @keyframes subir {
-  from { top: 100%; }
-  to   { top: -100%; }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-200%);
+  }
 }
 </style>
 </head>
