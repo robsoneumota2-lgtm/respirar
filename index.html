@@ -8,7 +8,7 @@
 <style>
 body {
   margin: 0;
-  padding: 30px 20px;
+  padding: 20px;
   background: #0b0b0b;
   color: #f2f2f2;
   font-family: serif;
@@ -27,18 +27,26 @@ audio {
   display: block;
 }
 
+/* JANELA DE LEITURA */
 .caixa {
   max-width: 700px;
-  margin: 50px auto;
-  line-height: 2;
+  height: 60vh;
+  margin: 40px auto;
+  overflow: hidden;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 20px;
+}
+
+/* TEXTO */
+.texto {
+  font-size: 26px;
+  line-height: 2.1;
   font-style: italic;
-  font-size: 24px;
+  text-align: left;
 }
 
-.botao {
-  margin-top: 30px;
-}
-
+/* BOTÃO */
 button {
   background: none;
   border: 1px solid #777;
@@ -51,12 +59,6 @@ button {
 button:hover {
   background: #222;
 }
-
-.texto {
-  display: none;
-  opacity: 0;
-  transition: opacity 4s ease; /* CONTROLA A VELOCIDADE */
-}
 </style>
 </head>
 
@@ -68,13 +70,10 @@ button:hover {
   <source src="Respirar era Difícil.mp3" type="audio/mpeg">
 </audio>
 
-<div class="botao">
-  <button onclick="mostrarTexto()">Respirar comigo</button>
-</div>
+<button onclick="iniciar()">Respirar comigo</button>
 
-<div class="caixa">
-
-  <div id="t1" class="texto">
+<div class="caixa" id="caixa">
+  <div class="texto" id="texto">
 Respirar era difícil  
 antes de ser metáfora.
 
@@ -88,9 +87,8 @@ Mas eu fiquei.
 
 Mesmo sem ar,  
 eu fiquei.
-  </div>
 
-  <div id="t2" class="texto">
+
 Se hoje doer,  
 fica.
 
@@ -100,31 +98,21 @@ Só não vai embora de si.
 O ar volta.  
 Ele sempre volta.
   </div>
-
 </div>
 
 <script>
-let passo = 0;
+let intervalo;
 
-function mostrarTexto() {
-  passo++;
+function iniciar() {
+  const caixa = document.getElementById("caixa");
+  let pos = 0;
 
-  if (passo === 1) {
-    aparecer("t1");
-  }
+  clearInterval(intervalo);
 
-  if (passo === 2) {
-    aparecer("t2");
-  }
-}
-
-function aparecer(id) {
-  const el = document.getElementById(id);
-  el.style.display = "block";
-
-  setTimeout(() => {
-    el.style.opacity = 1;
-  }, 100); // pequeno atraso pra garantir suavidade
+  intervalo = setInterval(() => {
+    pos += 0.3; // CONTROLA A VELOCIDADE (menor = mais lento)
+    caixa.scrollTop = pos;
+  }, 50);
 }
 </script>
 
