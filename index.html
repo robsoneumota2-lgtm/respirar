@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <title>Refúgio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
-
 <style>
 body {
+  margin: 0;
+  padding: 30px 20px;
   background: #0b0b0b;
   color: #f2f2f2;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: serif;
   text-align: center;
-  padding: 30px 20px;
 }
 
 h1 {
-  margin-bottom: 10px;
   font-weight: normal;
+  margin-bottom: 20px;
 }
 
 audio {
@@ -28,73 +27,94 @@ audio {
 }
 
 .caixa {
-  position: relative;
-  height: 420px;
-  overflow: hidden;
-  margin-top: 30px;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 40px auto;
+  line-height: 1.8;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.botao {
+  margin-top: 30px;
+}
+
+button {
+  background: none;
+  border: 1px solid #777;
+  color: #f2f2f2;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #222;
 }
 
 .texto {
-  position: absolute;
-  width: 100%;
-  white-space: pre-line;
-  font-style: italic;
-  line-height: 1.8;
-  animation: subir 45s linear infinite;
-}
-
-@keyframes subir {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(-200%);
-  }
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Refúgio</h1>
+<h1>Respirar</h1>
 
-<audio controls autoplay>
+<audio controls>
   <source src="Respirar era Difícil.mp3" type="audio/mpeg">
 </audio>
 
+<div class="botao">
+  <button onclick="mostrarTexto()">Leia</button>
+</div>
+
 <div class="caixa">
-<div class="texto">
-Respirar era difícil
+
+  <div id="t1" class="texto">
+Respirar era difícil  
 antes de ser metáfora.
 
-O peito fechava
+O peito fechava  
 sem pedir permissão.
 
-Cada passo doía
+Cada passo doía  
 como se o ar tivesse peso.
 
 Mas eu fiquei.
 
-Mesmo sem ar,
+Mesmo sem ar,  
 eu fiquei.
+  </div>
 
-
-———
-
-
-Se hoje doer,
+  <div id="t2" class="texto">
+Se hoje doer,  
 fica.
 
-Não precisa ser forte.
+Não precisa ser forte.  
 Só não vai embora de si.
 
-O ar volta.
+O ar volta.  
 Ele sempre volta.
+  </div>
+
 </div>
-</div>
+
+<script>
+let passo = 0;
+
+function mostrarTexto() {
+  passo++;
+
+  if (passo === 1) {
+    document.getElementById("t1").style.display = "block";
+  }
+
+  if (passo === 2) {
+    document.getElementById("t2").style.display = "block";
+  }
+}
+</script>
 
 </body>
 </html>
