@@ -3,63 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Respirar</title>
 
 <style>
-/* RESET FORÇADO */
-* {
-  box-sizing: border-box;
-  font-size: 100%;
-}
-
-/* CORPO */
 body {
   margin: 0;
   padding: 20px;
-  background: #000;
-  color: #fff;
+  background: #0b0b0b;
+  color: #f2f2f2;
   font-family: serif;
-  text-align: center;
 }
 
 /* TÍTULO */
 h1 {
-  font-size: 28px !important;
+  text-align: center;
+  font-size: 32px;
   font-weight: normal;
+  margin-bottom: 20px;
 }
 
 /* AUDIO */
 audio {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  display: block;
   margin: 20px auto;
 }
 
-/* BOTÃO */
-button {
-  font-size: 20px !important;
-  padding: 14px 28px;
-  margin: 20px 0;
-  background: none;
-  color: #fff;
-  border: 1px solid #666;
-}
-
-/* CAIXA ROLÁVEL */
-#caixa {
-  height: 60vh;
-  overflow-y: scroll;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-  padding: 20px;
-}
-
-/* TEXTO FORÇADO */
-#texto {
-  font-size: 28px !important;
-  line-height: 2.2 !important;
-  text-align: left;
+/* TEXTO */
+.texto {
+  max-width: 700px;
+  margin: 40px auto;
+  font-size: 28px;
+  line-height: 2.2;
+  font-style: italic;
   white-space: pre-line;
 }
 </style>
@@ -73,51 +50,31 @@ button {
   <source src="Respirar era Difícil.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="subir()">Respirar comigo</button>
-
-<div id="caixa">
-  <div id="texto">
-Respirar era difícil
+<div class="texto">
+Respirar era difícil  
 antes de ser metáfora.
 
-O peito fechava
+O peito fechava  
 sem pedir permissão.
 
-Cada passo doía
+Cada passo doía  
 como se o ar tivesse peso.
 
 Mas eu fiquei.
 
-Mesmo sem ar,
+Mesmo sem ar,  
 eu fiquei.
 
 
-Se hoje doer,
+Se hoje doer,  
 fica.
 
-Não precisa ser forte.
+Não precisa ser forte.  
 Só não vai embora de si.
 
-O ar volta.
+O ar volta.  
 Ele sempre volta.
-  </div>
 </div>
-
-<script>
-function subir() {
-  const caixa = document.getElementById("caixa");
-  let pos = caixa.scrollTop;
-
-  const rolar = setInterval(() => {
-    pos += 1;          // VELOCIDADE (1 = bem lento)
-    caixa.scrollTop = pos;
-
-    if (pos >= caixa.scrollHeight) {
-      clearInterval(rolar);
-    }
-  }, 40);
-}
-</script>
 
 </body>
 </html>
