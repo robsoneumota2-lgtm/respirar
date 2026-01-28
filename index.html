@@ -15,6 +15,7 @@ body {
 
 h1 {
   margin-bottom: 10px;
+  font-weight: normal;
 }
 
 audio {
@@ -22,16 +23,6 @@ audio {
   max-width: 420px;
   margin: 20px auto;
   display: block;
-}
-
-.menu button {
-  margin: 5px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  background: #fff;
-  color: #000;
-  cursor: pointer;
 }
 
 /* CAIXA DA LETRA */
@@ -43,22 +34,23 @@ audio {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.9;
 }
 
-/* TEXTO QUE SOBE */
-.letra {
+/* TEXTO */
+.texto {
   position: absolute;
   width: 100%;
   white-space: pre-line;
   font-style: italic;
   line-height: 1.8;
-  animation: subir 40s linear infinite;
+  animation: subir 45s linear infinite;
 }
 
 /* ANIMAÇÃO */
 @keyframes subir {
-  0%   { top: 100%; }
-  100% { top: -100%; }
+  from { top: 100%; }
+  to   { top: -100%; }
 }
 </style>
 </head>
@@ -67,25 +59,19 @@ audio {
 
 <h1>Refúgio</h1>
 
-<audio controls>
+<audio controls autoplay>
   <source src="Respirar era Difícil.mp3" type="audio/mpeg">
 </audio>
 
-<div class="menu">
-  <button onclick="document.getElementById('letra').style.animationPlayState='running'">
-    Leia
-  </button>
-</div>
-
 <div class="caixa">
-  <div class="letra" id="letra">
+  <div class="texto">
 Respirar era difícil
 antes de ser metáfora.
 
 O peito fechava
 sem pedir permissão.
 
-Cada passo doía,
+Cada passo doía
 como se o ar tivesse peso.
 
 Mas eu fiquei.
