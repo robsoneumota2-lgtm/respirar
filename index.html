@@ -14,8 +14,15 @@
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       letter-spacing: 1px;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 420px;
+      margin: 20px auto;
+      display: block;
     }
 
     .menu button {
@@ -34,19 +41,12 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      text-align: left;
       line-height: 1.7;
+      text-align: left;
     }
 
     .secao.ativa {
       display: block;
-    }
-
-    audio {
-      width: 100%;
-      max-width: 420px;
-      display: block;
-      margin: 20px auto;
     }
 
     .poema {
@@ -61,6 +61,11 @@
 
   <h1>Refúgio</h1>
 
+  <!-- 🎵 MÚSICA SEMPRE ATIVA -->
+  <audio controls>
+    <source src="Respirar era Difícil.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- MENU -->
   <div class="menu">
     <button onclick="mostrar('ouca')">Ouça</button>
@@ -68,19 +73,17 @@
     <button onclick="mostrar('fique')">Fique</button>
   </div>
 
-  <!-- SEÇÃO OUVIR -->
+  <!-- CONTEÚDOS -->
   <div id="ouca" class="secao ativa">
-    <audio controls>
-      <source src="Respirar era Difícil.mp3" type="audio/mpeg">
-    </audio>
+    <p>Se quiser, apenas escute.<br>Não precisa fazer nada.</p>
   </div>
 
-  <!-- SEÇÃO LER -->
   <div id="leia" class="secao">
     <div class="poema">
 Respirar era difícil
 antes de ser metáfora.
-O ar faltava,
+
+O peito apertava,
 mas a palavra ficou.
 
 Se hoje eu paro,
@@ -88,19 +91,18 @@ Se hoje eu paro,
     </div>
   </div>
 
-  <!-- SEÇÃO FICAR -->
   <div id="fique" class="secao">
     <p>
       Fique aqui.<br>
-      Você não precisa se explicar.<br><br>
-      Só existir já é suficiente.
+      Não precisa se explicar.<br><br>
+      O mundo pode esperar.
     </p>
   </div>
 
   <script>
     function mostrar(id) {
-      const secoes = document.querySelectorAll('.secao');
-      secoes.forEach(s => s.classList.remove('ativa'));
+      document.querySelectorAll('.secao')
+        .forEach(s => s.classList.remove('ativa'));
       document.getElementById(id).classList.add('ativa');
     }
   </script>
